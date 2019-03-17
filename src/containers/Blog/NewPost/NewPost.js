@@ -24,19 +24,21 @@ class NewPost extends Component {
         axios.post("https://jsonplaceholder.typicode.com/posts", post)
             .then(response => {
                 console.log(response);
-                this.setState({submitted : true});
+                //this.props.history.push('/posts');  //can go back to new post
+                this.props.history.replace('/posts');  //can not go back to new post page
+                //this.setState({submitted : true});
             })
         
     }
 
     render () {
-        let redirected = null;
-        if(this.state.submitted){
-            redirected = <Redirect to = '/posts'/>
-        }
+        // let redirected = null;
+        // if(this.state.submitted){
+        //     redirected = <Redirect to = '/posts'/>
+        // }
         return (
             <div className="NewPost">
-                {redirected}
+                {/*{redirected}*/}
                 <h1>Add a Post</h1>
                 <label>Title</label>
                 <input type="text" value={this.state.title} onChange={(event) => this.setState({title: event.target.value})} />
